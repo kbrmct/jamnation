@@ -125,11 +125,19 @@
 
         async function handleSubmit(event) {
             event.preventDefault();
+
+            const button = document.getElementById("submit-button");
+
+            button.disabled = true; // Disable the button
+            button.textContent = '処理中'; // Change button text
+
+
             const emailInput = document.querySelector('input[name="email"]');
             const errorMessage = document.querySelector('.error-message');
             if (!validateEmail(emailInput.value)) {
                 errorMessage.style.display = 'block';
                 errorMessage.textContent = '正しいメールアドレスを入力してください。';
+
                 return;
             }
 
@@ -179,23 +187,6 @@
             </div>
         </div>
     </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="form-container">
-            <h2>Jam Nationに先行登録しよう</h2>
-
-            <form onsubmit="handleSubmit(event)"　id="myForm">
-                <input type="email" name="email" id="email" class="form-control" placeholder="メールアドレスを入力" required >
-                <div class="error-message"></div>
-                <button type="submit" class="btn btn-lg w-100">今すぐ登録する</button>
-            </form>
-        </div>
-
-        <div id="thank-you">登録ありがとうございました！</div>
-
-    </section>
-
 
     <!-- Content Blocks -->
     <section class="container">
@@ -313,7 +304,7 @@
             <form onsubmit="handleSubmit(event)"　id="myForm">
                 <input type="email" name="email" id="email" class="form-control" placeholder="メールアドレスを入力" required >
                 <div class="error-message"></div>
-                <button type="submit" class="btn btn-lg w-100">今すぐ登録する</button>
+                <button type="submit" class="btn btn-lg w-100" id="submit-button">今すぐ登録する</button>
             </form>
         </div>
 
